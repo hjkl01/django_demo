@@ -2,6 +2,7 @@
 
 # Create your views here.
 from django.contrib.auth.models import User, Group
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 
 from gd_dp.serializers import (
@@ -15,6 +16,8 @@ from gd_dp.serializers import (
 class ShopDetailViewSet(viewsets.ModelViewSet):
     queryset = ShopDetail.objects.all()
     serializer_class = ShopDetailSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ["origin_shopname", "shopname"]
 
 
 class UserViewSet(viewsets.ModelViewSet):
