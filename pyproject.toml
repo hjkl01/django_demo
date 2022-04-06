@@ -1,0 +1,46 @@
+[project]
+name = "ycm76229@gmail.cm"
+version = "1.1.0"
+description = "django project"
+authors = [
+{name = "", email = ""},
+]
+license-expression = "MIT"
+dependencies = [
+    "django==3.2.4",
+    "django-filter==2.4.0",
+    "django-import-export==2.5.0",
+    "django-simpleui==2021.6.2",
+    "djangorestframework==3.12.4",
+    "djangorestframework-simplejwt==4.7.1",
+    "drf-yasg==1.20.0",
+    "psycopg2-binary",
+    "pyyaml==5.4.1",
+    "requests==2.25.1",
+    "django-environ==0.4.5",
+    "setuptools>=62.0.0",
+]
+requires-python = ">=3.8"
+
+[project.urls]
+Homepage = ""
+
+[tool.pdm]
+[[tool.pdm.source]]
+name = "pypi"
+url = "http://mirrors.aliyun.com/pypi/simple/"
+verify_ssl = false
+
+[build-system]
+requires = ["pdm-pep517"]
+build-backend = "pdm.pep517.api"
+
+[tool.pdm.scripts]
+_.env_file = ".env"
+pre_migrate = "python manage.py makemigrations"
+migrate = "python manage.py migrate"
+post_migrate = { cmd = ["python","manage.py","migrate","--run-syncdb"]}
+static = { cmd = ["python","manage.py","collectstatic", "-c"]}
+createsuperuser = "python manage.py createsuperuser"
+dev = "python manage.py runserver"
+start = "gunicorn -w 8 -b localhost:8000 data_service.wsgi"
