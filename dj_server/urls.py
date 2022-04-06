@@ -22,6 +22,8 @@ from rest_framework_simplejwt.views import (
 )
 from django.conf.urls import url, include
 from django.views.generic import RedirectView
+from django.views import static
+from django.conf import settings
 
 from rest_framework import routers
 from rest_framework import permissions
@@ -41,6 +43,7 @@ patterns = [
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    url(r"^static/(?P<path>.*)$", static.serve, {"document_root": settings.STATIC_ROOT}, name="static"),
 ] + patterns
 
 
@@ -64,7 +67,7 @@ schema_view = get_schema_view(
 )
 
 urlpatterns += [
-    url(r'^$', RedirectView.as_view(url='/swagger/')),
+    url(r"^$", RedirectView.as_view(url="/swagger/")),
     url(
         r"^swagger(?P<format>\.json|\.yaml)$",
         schema_view.without_ui(cache_timeout=0),
@@ -75,7 +78,5 @@ urlpatterns += [
         schema_view.with_ui("swagger", cache_timeout=0),
         name="schema-swagger-ui",
     ),
-    url(
-        r"^redoc/$", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"
-    ),
+    url(r"^redoc/$", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
 ]
