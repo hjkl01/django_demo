@@ -8,7 +8,8 @@ admin.site.site_header = "点评数据"
 admin.site.site_title = "点评数据管理后台"
 admin.site.index_title = "数据中心"
 
-#  admin.site.register(ShopDetail)
+
+# admin.site.register(ShopDetail)
 @admin.register(ShopDetail)
 class ShopsTasksAdmin(ImportExportActionModelAdmin):
 
