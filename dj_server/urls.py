@@ -30,13 +30,15 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
-from gd_dp import views
+# from gd_dp import views as gd_dp_views
+from collectLog import views
 
 
 router = routers.DefaultRouter()
 router.register(r"users", views.UserViewSet)
 router.register(r"groups", views.GroupViewSet)
-router.register(r"shop", views.ShopDetailViewSet)
+# router.register(r"shop", gd_dp_views.ShopDetailViewSet)
+router.register(r"log", views.CollectLogViewSet)
 patterns = [
     url(r"^api/", include(router.urls)),
 ]
@@ -58,7 +60,7 @@ schema_view = get_schema_view(
         title="Snippets API",
         default_version="v1",
         description="This is a swagger ",
-        terms_of_service="http://nj.viewer.pub:8000",
+        terms_of_service="http://nj.hjkl01.cn:8000",
         contact=openapi.Contact(email="jinlong.li@cpgrouptechnology.com"),
         license=openapi.License(name="BSD License"),
     ),
@@ -79,4 +81,5 @@ urlpatterns += [
         name="schema-swagger-ui",
     ),
     url(r"^redoc/$", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
+    url(r'^accounts/', RedirectView.as_view(url="/admin/"))
 ]

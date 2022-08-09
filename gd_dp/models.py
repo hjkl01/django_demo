@@ -33,7 +33,8 @@ class ShopDetail(models.Model):
 
     create_time = models.DateTimeField(default=django.utils.timezone.now, verbose_name="创建时间")
     update_time = models.DateTimeField(
-        auto_now_add=True,
+        auto_now=True,  # 每次更新数据时更新
+        auto_now_add=True,  # 第一次插入数据时更新
         verbose_name="date update",
     )
 
