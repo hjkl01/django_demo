@@ -1,5 +1,5 @@
 [project]
-name = "ycm76229@gmail.cm"
+name = "ycm76229@gmail.com"
 version = "1.1.0"
 description = "django project"
 authors = [
@@ -19,6 +19,7 @@ dependencies = [
     "requests==2.25.1",
     "django-environ==0.4.5",
     "setuptools>=62.0.0",
+    "gunicorn>=20.1.0",
 ]
 requires-python = ">=3.8"
 
@@ -43,4 +44,4 @@ post_migrate = { cmd = ["python","manage.py","migrate","--run-syncdb"]}
 static = { cmd = ["python","manage.py","collectstatic", "-c"]}
 createsuperuser = "python manage.py createsuperuser"
 dev = "python manage.py runserver"
-start = "gunicorn -w 8 -b localhost:8000 data_service.wsgi"
+start = "gunicorn -w 8 -b localhost:8000 dj_server.wsgi"
