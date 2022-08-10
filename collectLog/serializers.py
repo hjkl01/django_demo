@@ -19,20 +19,4 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class CollectLogSerializer(serializers.ModelSerializer):
     class Meta:
         model = CollectLog
-        fields = (
-            "id",
-            "elapsed",
-            "exception",
-            "extra",
-            "fileinfo",
-            "Function",
-            "Level",
-            "line",
-            "message",
-            "Module",
-            "name",
-            "Process",
-            "Thread",
-            "insert_time",
-            "created_time",
-        )
+        fields = [log.name for log in CollectLog._meta.get_fields()]

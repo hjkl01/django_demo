@@ -6,7 +6,8 @@ from django.db import models
 class CollectLog(models.Model):
 
     id = models.AutoField(primary_key=True)
-    elapsed = models.FloatField(verbose_name="消耗时间")
+    hostname = models.CharField(max_length=100, verbose_name="主机")
+    elapsed = models.FloatField(verbose_name="运行时间/秒")
     exception = models.TextField(blank=True, null=True, verbose_name="异常")
     extra = models.CharField(max_length=200, verbose_name="其他")
     fileinfo = models.CharField(max_length=100, verbose_name="文件")
@@ -27,7 +28,7 @@ class CollectLog(models.Model):
     # auto_now_add=True,  # 第一次插入数据时更新
 
     def __str__(self):
-        return f"{self.leveL} {self.message}"
+        return f"{self.Level} {self.message}"
 
     class Meta:
         ordering = ["created_time"]

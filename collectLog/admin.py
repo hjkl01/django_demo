@@ -16,25 +16,9 @@ from collectLog.models import CollectLog
 @admin.register(CollectLog)
 class CollectLogAdmin(ImportExportActionModelAdmin):
 
-    list_display = [
-        "id",
-        "elapsed",
-        "exception",
-        "extra",
-        "fileinfo",
-        "Function",
-        "Level",
-        "line",
-        "message",
-        "Module",
-        "name",
-        "Process",
-        "Thread",
-        "insert_time",
-        "created_time",
-    ]
+    list_display = [log.name for log in CollectLog._meta.get_fields()]
     search_fields = list_display
-    list_filter = ("exception", "fileinfo", "Function", "Level", "line", 'Module', 'Process')
+    list_filter = ("hostname", "fileinfo", "Function", "Level", "line", 'Module', 'Process')
     ordering = ("-created_time",)
     list_per_page = 100
     date_hierarchy = "created_time"

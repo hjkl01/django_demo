@@ -32,20 +32,4 @@ class CollectLogViewSet(viewsets.ModelViewSet):
     queryset = CollectLog.objects.all()
     serializer_class = CollectLogSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = [
-        "id",
-        "elapsed",
-        "exception",
-        "extra",
-        "fileinfo",
-        "Function",
-        "Level",
-        "line",
-        "message",
-        "Module",
-        "name",
-        "Process",
-        "Thread",
-        "insert_time",
-        "created_time",
-    ]
+    filterset_fields = [log.name for log in CollectLog._meta.get_fields()]
