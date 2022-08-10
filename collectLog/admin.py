@@ -18,7 +18,7 @@ class CollectLogAdmin(ImportExportActionModelAdmin):
 
     list_display = [log.name for log in CollectLog._meta.get_fields()]
     search_fields = list_display
-    list_filter = ("hostname", "fileinfo", "Function", "Level", "line", 'Module', 'Process')
+    list_filter = ("hostname", "fileinfo", "Function", "Level", "line", 'Module', 'insert_time')
     ordering = ("-created_time",)
     list_per_page = 100
     date_hierarchy = "created_time"
