@@ -24,11 +24,11 @@ def postlog(log):
     log['elapsed'] = log['elapsed']['seconds']
     log['extra'] = json.dumps(log['extra'])
     log['fileinfo'] = log['file']['name']
-    log['functioN'] = log['function']
-    log['leveL'] = log['level']['name']
-    log['modulE'] = log['module']
-    log['procesS'] = log['process']['id']
-    log['threaD'] = log['thread']['id']
+    log['Function'] = log['function']
+    log['Level'] = log['level']['name']
+    log['Module'] = log['module']
+    log['Process'] = log['process']['id']
+    log['Thread'] = log['thread']['id']
     log['insert_time'] = log['time']['repr']
     delete_item = [log['file'], log['function'], log['level'], log['module'], log['process'], log['thread'], log['time']]
     for di in delete_item:

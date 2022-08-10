@@ -22,19 +22,19 @@ class CollectLogAdmin(ImportExportActionModelAdmin):
         "exception",
         "extra",
         "fileinfo",
-        "functioN",
-        "leveL",
+        "Function",
+        "Level",
         "line",
         "message",
-        "modulE",
+        "Module",
         "name",
-        "procesS",
-        "threaD",
+        "Process",
+        "Thread",
         "insert_time",
         "created_time",
     ]
     search_fields = list_display
-    list_filter = ("exception", "fileinfo", "functioN", "leveL", "line", 'modulE', 'procesS')
+    list_filter = ("exception", "fileinfo", "Function", "Level", "line", 'Module', 'Process')
     ordering = ("-created_time",)
     list_per_page = 100
     date_hierarchy = "created_time"
