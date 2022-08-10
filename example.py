@@ -21,6 +21,7 @@ url = f"{host}/api/log/"
 
 def postlog(log):
     log = json.loads(log)['record']
+    log['hostname'] = os.uname[1]
     log['elapsed'] = log['elapsed']['seconds']
     log['extra'] = json.dumps(log['extra'])
     log['fileinfo'] = log['file']['name']
