@@ -42,6 +42,9 @@ ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     "simpleui",
+    "captcha",
+    "tyadmin_api_cli",
+    "tyadmin_api",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -56,6 +59,10 @@ INSTALLED_APPS = [
     # "gd_dp",
     "collectLog",
 ]
+
+TY_ADMIN_CONFIG = {
+    'GEN_APPS': ['collectLog']
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -72,7 +79,7 @@ ROOT_URLCONF = "dj_server.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, 'templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -184,10 +191,11 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
 }
 
-#  STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-
-# simpleui
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+if DEBUG:
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+else:
+    # simpleui
+    STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # 首页
 #  SIMPLEUI_HOME_PAGE = "/"
@@ -232,7 +240,7 @@ SIMPLEUI_CONFIG = {
             "name": "WORK",
             "icon": "fa fa-server",
             "models": [
-                {"name": "GITEA", "url": "https://nj.hjkl01.cn:33000/", "icon": "fa fa-code"},
+                {"name": "GITEA", "url": "https://nj.hjkl01.cn:33000/", "icon": "fa fa-code", "newTab": True},
                 {"name": "CLOUDREVE", "url": "https://nj.hjkl01.cn:15212/", "icon": "fa fa-cloud"},
                 {"name": "ALIST", "url": "https://nj.hjkl01.cn:15244/", "icon": "fa fa-file"},
                 {"name": "FRPS", "url": "https://nj.hjkl01.cn:17400/", "icon": "fa fa-wifi"},

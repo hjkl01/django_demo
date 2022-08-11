@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -33,6 +33,8 @@ from drf_yasg import openapi
 # from gd_dp import views as gd_dp_views
 from collectLog import views
 
+from tyadmin_api.views import AdminIndexView
+
 
 router = routers.DefaultRouter()
 router.register(r"users", views.UserViewSet)
@@ -41,6 +43,8 @@ router.register(r"groups", views.GroupViewSet)
 router.register(r"log", views.CollectLogViewSet)
 patterns = [
     url(r"^api/", include(router.urls)),
+    re_path('^xadmin/.*', AdminIndexView.as_view()),
+    path('api/xadmin/v1/', include('tyadmin_api.urls')),
 ]
 
 urlpatterns = [

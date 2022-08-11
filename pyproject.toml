@@ -43,5 +43,6 @@ migrate = "python manage.py migrate"
 post_migrate = { cmd = ["python","manage.py","migrate","--run-syncdb"]}
 static = { cmd = ["python","manage.py","collectstatic", "-c"]}
 createsuperuser = "python manage.py createsuperuser"
+gen = "python manage.py init_admin && python manage.py gen_all && cd tyadmin && yarn install && yarn build"
 dev = "python manage.py runserver"
 start = "gunicorn -w 8 -b localhost:8000 dj_server.wsgi"
