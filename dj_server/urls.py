@@ -74,7 +74,7 @@ schema_view = get_schema_view(
 
 urlpatterns += [
     # url(r"^$", RedirectView.as_view(url="/swagger/")),
-    url(r"^$", RedirectView.as_view(url="/admin/")),
+    url(r"^$", RedirectView.as_view(url="/xadmin/")),
     url(
         r"^swagger(?P<format>\.json|\.yaml)$",
         schema_view.without_ui(cache_timeout=0),
