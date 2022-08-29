@@ -56,13 +56,18 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "rest_framework_simplejwt",
-    # "gd_dp",
-    "collectLog",
+    # "apps.collectlog",
 ]
+# 自动添加app
+APPS_FLODER = os.path.join(BASE_DIR, "apps")
+APPS = [
+    _
+    for _ in os.listdir(APPS_FLODER)
+    if os.path.isdir(os.path.join(APPS_FLODER, _)) and "pycache" not in _
+]
+INSTALLED_APPS += ["apps." + _ for _ in APPS]
 
-TY_ADMIN_CONFIG = {
-    'GEN_APPS': ['collectLog']
-}
+TY_ADMIN_CONFIG = {"GEN_APPS": APPS}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -79,7 +84,7 @@ ROOT_URLCONF = "dj_server.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, 'templates')],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -240,19 +245,48 @@ SIMPLEUI_CONFIG = {
             "name": "WORK",
             "icon": "fa fa-server",
             "models": [
-                {"name": "GITEA", "url": "https://nj.hjkl01.cn:33000/", "icon": "fa fa-code", "newTab": True},
-                {"name": "CLOUDREVE", "url": "https://nj.hjkl01.cn:15212/", "icon": "fa fa-cloud"},
-                {"name": "ALIST", "url": "https://nj.hjkl01.cn:15244/", "icon": "fa fa-file"},
-                {"name": "FRPS", "url": "https://nj.hjkl01.cn:17400/", "icon": "fa fa-wifi"},
+                {
+                    "name": "GITEA",
+                    "url": "https://nj.hjkl01.cn:33000/",
+                    "icon": "fa fa-code",
+                    "newTab": True,
+                },
+                {
+                    "name": "CLOUDREVE",
+                    "url": "https://nj.hjkl01.cn:15212/",
+                    "icon": "fa fa-cloud",
+                },
+                {
+                    "name": "ALIST",
+                    "url": "https://nj.hjkl01.cn:15244/",
+                    "icon": "fa fa-file",
+                },
+                {
+                    "name": "FRPS",
+                    "url": "https://nj.hjkl01.cn:17400/",
+                    "icon": "fa fa-wifi",
+                },
             ],
         },
         {
             "name": "PLAY",
             "icon": "fa fa-video",
             "models": [
-                {"name": "ARIA2", "url": "http://nj.hjkl01.cn:16880/", "icon": "fa fa-download"},
-                {"name": "MOVIE", "url": "https://nj.hjkl01.cn:18096/", "icon": "fa fa-film"},
-                {"name": "MUSIC", "url": "https://nj.hjkl01.cn:13000/", "icon": "fa fa-music"},
+                {
+                    "name": "ARIA2",
+                    "url": "http://nj.hjkl01.cn:16880/",
+                    "icon": "fa fa-download",
+                },
+                {
+                    "name": "MOVIE",
+                    "url": "https://nj.hjkl01.cn:18096/",
+                    "icon": "fa fa-film",
+                },
+                {
+                    "name": "MUSIC",
+                    "url": "https://nj.hjkl01.cn:13000/",
+                    "icon": "fa fa-music",
+                },
             ],
         },
         {

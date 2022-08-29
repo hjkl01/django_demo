@@ -7,7 +7,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 
 
-from collectLog.serializers import UserSerializer, GroupSerializer, CollectLog, CollectLogSerializer
+from apps.collectlog.serializers import UserSerializer, GroupSerializer, CollectLog, CollectLogSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):

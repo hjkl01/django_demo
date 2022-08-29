@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, re_path
+from django.urls import path
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -30,30 +30,32 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
-# from gd_dp import views as gd_dp_views
-from collectLog import views
-
-from tyadmin_api.views import AdminIndexView
+from apps.collectlog import views
+from apps.news import views as news_views
 
 
 router = routers.DefaultRouter()
 router.register(r"users", views.UserViewSet)
 router.register(r"groups", views.GroupViewSet)
-# router.register(r"shop", gd_dp_views.ShopDetailViewSet)
 router.register(r"log", views.CollectLogViewSet)
+router.register(r"news", news_views.NewsViewSet)
 patterns = [
     url(r"^api/", include(router.urls)),
-    re_path('^xadmin/.*', AdminIndexView.as_view()),
-    path('api/xadmin/v1/', include('tyadmin_api.urls')),
 ]
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    url(r"^static/(?P<path>.*)$", static.serve, {"document_root": settings.STATIC_ROOT}, name="static"),
+    url(
+        r"^static/(?P<path>.*)$",
+        static.serve,
+        {"document_root": settings.STATIC_ROOT},
+        name="static",
+    ),
 ] + patterns
 
 
 urlpatterns += [
+    path("captcha/", include("captcha.urls")),
     path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("api/token/verify/", TokenVerifyView.as_view(), name="token_verify"),
@@ -73,8 +75,7 @@ schema_view = get_schema_view(
 )
 
 urlpatterns += [
-    # url(r"^$", RedirectView.as_view(url="/swagger/")),
-    url(r"^$", RedirectView.as_view(url="/xadmin/")),
+    url(r"^$", RedirectView.as_view(url="/admin/")),
     url(
         r"^swagger(?P<format>\.json|\.yaml)$",
         schema_view.without_ui(cache_timeout=0),
@@ -85,6 +86,8 @@ urlpatterns += [
         schema_view.with_ui("swagger", cache_timeout=0),
         name="schema-swagger-ui",
     ),
-    url(r"^redoc/$", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
-    url(r'^accounts/', RedirectView.as_view(url="/admin/"))
+    url(
+        r"^redoc/$", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"
+    ),
+    url(r"^accounts/", RedirectView.as_view(url="/admin/")),
 ]

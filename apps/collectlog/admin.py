@@ -5,7 +5,7 @@ from django.contrib import admin
 from import_export.admin import ImportExportActionModelAdmin
 
 
-from collectLog.models import CollectLog
+from apps.collectlog.models import CollectLog
 
 # admin.site.site_header = ""
 # admin.site.site_title = "点评数据管理后台"
