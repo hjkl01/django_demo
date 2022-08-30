@@ -62,12 +62,9 @@ class NewsViewSet(viewsets.ModelViewSet):
         methods=["POST"],
         detail=False,
         url_path="sended",
-        permission_classes=[permissions.AllowAny],
+        permission_classes=[permissions.IsAuthenticated],
     )
     def getSended(self, request, *args, **kwargs):
-        print("args--> ", args)
-        print("kwargs--> ", kwargs)
-
         news = News.objects.filter(if_sended=0)
         serializer = NewsSerializer(news, many=True)
         return JSONResponse(serializer.data)
@@ -76,14 +73,14 @@ class NewsViewSet(viewsets.ModelViewSet):
         methods=["POST"],
         detail=False,
         url_path="update",
-        permission_classes=[permissions.AllowAny],
+        permission_classes=[permissions.IsAuthenticated],
     )
     def updateSended(self, request, *args, **kwargs):
-        print("args--> ", args)
-        print("kwargs--> ", kwargs)
-        # urls = []
-        return 0
+        # print("request--> ", request.__dict__)
+        # print("request--> ", request.__dict__.keys())
+        # print("request--> ", request.__dict__['_data'])
+        ids = request._data["ids"]
+        print(ids)
 
-        # news = News.objects.filter(url__in=args.get('urls'))
-        # serializer = NewsSerializer(news, many=True)
-        # return JSONResponse(serializer.data)
+        News.objects.filter(id__in=ids).update(if_sended=1)
+        return JSONResponse(ids)
