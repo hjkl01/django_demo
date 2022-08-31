@@ -76,10 +76,8 @@ class NewsViewSet(viewsets.ModelViewSet):
         permission_classes=[permissions.IsAuthenticated],
     )
     def updateSended(self, request, *args, **kwargs):
-        # print("request--> ", request.__dict__)
-        # print("request--> ", request.__dict__.keys())
-        # print("request--> ", request.__dict__['_data'])
-        ids = request._data["ids"]
+        print("request--> ", request.data)
+        ids = request.data.get('ids')
         print(ids)
 
         News.objects.filter(id__in=ids).update(if_sended=1)
