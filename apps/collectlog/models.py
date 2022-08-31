@@ -32,7 +32,7 @@ class CollectLog(models.Model):
 
     class Meta:
         ordering = ["created_time"]
-        db_table = "collectLog"
+        db_table = "data_collectlog"
         verbose_name = "log日志"
         verbose_name_plural = "log日志"
         unique_together = ("created_time", "message")

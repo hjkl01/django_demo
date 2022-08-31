@@ -32,6 +32,7 @@ from drf_yasg import openapi
 
 from apps.collectlog import views
 from apps.news import views as news_views
+from apps.news_others import views as newsothers_views
 
 
 router = routers.DefaultRouter()
@@ -39,6 +40,7 @@ router.register(r"users", views.UserViewSet)
 router.register(r"groups", views.GroupViewSet)
 router.register(r"log", views.CollectLogViewSet)
 router.register(r"news", news_views.NewsViewSet)
+router.register(r"newsothers", newsothers_views.NewsOthersViewSet)
 patterns = [
     url(r"^api/", include(router.urls)),
 ]
