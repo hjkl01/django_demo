@@ -242,64 +242,12 @@ SIMPLEUI_CONFIG = {
     "menus": [
         {"name": "SWAGGER", "url": "/swagger/", "icon": "fa fa-user"},
         {
-            "name": "WORK",
-            "icon": "fa fa-server",
-            "models": [
-                {
-                    "name": "GITEA",
-                    "url": "https://nj.hjkl01.cn:33000/",
-                    "icon": "fa fa-code",
-                    "newTab": True,
-                },
-                {
-                    "name": "CLOUDREVE",
-                    "url": "https://nj.hjkl01.cn:15212/",
-                    "icon": "fa fa-cloud",
-                },
-                {
-                    "name": "ALIST",
-                    "url": "https://nj.hjkl01.cn:15244/",
-                    "icon": "fa fa-file",
-                },
-                {
-                    "name": "FRPS",
-                    "url": "https://nj.hjkl01.cn:17400/",
-                    "icon": "fa fa-wifi",
-                },
-            ],
-        },
-        {
-            "name": "PLAY",
-            "icon": "fa fa-video",
-            "models": [
-                {
-                    "name": "ARIA2",
-                    "url": "http://nj.hjkl01.cn:16880/",
-                    "icon": "fa fa-download",
-                },
-                {
-                    "name": "MOVIE",
-                    "url": "https://nj.hjkl01.cn:18096/",
-                    "icon": "fa fa-film",
-                },
-                {
-                    "name": "MUSIC",
-                    "url": "https://nj.hjkl01.cn:13000/",
-                    "icon": "fa fa-music",
-                },
-            ],
-        },
-        {
-            "name": "Myself",
+            "name": "Websites",
             "icon": "fa fa-blog",
             "models": [
                 {"name": "BLOG", "url": "https://pages.hjkl01.cn/"},
-                # {"name": "GAYHUB", "url": "https://github.com/", "newTab": True, "icon": "fab fa-github"},
                 {"name": "抽屉", "url": "https://dig.chouti.com/"},
-                # {"name": "V2EX", "url": "https://www.v2ex.com/"},
                 {"name": "ROUTER", "url": "https://www.right.com.cn/forum/"},
-                # {"name": "TELEGRAM", "url": "https://web.telegram.org/z/"},
-                # {"name": "TWITTER", "url": "https://twitter.com/explore"},
             ],
         },
     ],
