@@ -1,3 +1,4 @@
+import json
 import random
 from datetime import datetime, timedelta
 
@@ -77,8 +78,9 @@ class NewsViewSet(viewsets.ModelViewSet):
     )
     def updateSended(self, request, *args, **kwargs):
         print("request--> ", request.data)
-        ids = request.data.get('ids')
+        ids = request.data.get("ids")
         print(ids)
+        ids = json.loads(ids)
 
         News.objects.filter(id__in=ids).update(if_sended=1)
         return JSONResponse(ids)
