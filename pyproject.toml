@@ -20,7 +20,6 @@ dependencies = [
     "django-environ==0.4.5",
     "setuptools>=62.0.0",
     "gunicorn>=20.1.0",
-    "tyadmin-api-cli>=0.8.2",
 ]
 requires-python = ">=3.8"
 
@@ -44,6 +43,5 @@ migrate = "python manage.py migrate"
 post_migrate = { cmd = ["python","manage.py","migrate","--run-syncdb"]}
 static = { cmd = ["python","manage.py","collectstatic", "-c"]}
 createsuperuser = "python manage.py createsuperuser"
-gen = "python manage.py init_admin && python manage.py gen_all && cd tyadmin && yarn install && yarn build"
 dev = "python manage.py runserver"
 start = "gunicorn -w 8 -b localhost:8000 dj_server.wsgi"

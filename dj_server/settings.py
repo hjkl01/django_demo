@@ -42,9 +42,6 @@ ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     "simpleui",
-    "captcha",
-    "tyadmin_api_cli",
-    "tyadmin_api",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -56,7 +53,6 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "rest_framework_simplejwt",
-    # "apps.collectlog",
 ]
 # 自动添加app
 APPS_FLODER = os.path.join(BASE_DIR, "apps")
@@ -66,8 +62,6 @@ APPS = [
     if os.path.isdir(os.path.join(APPS_FLODER, _)) and "pycache" not in _
 ]
 INSTALLED_APPS += ["apps." + _ for _ in APPS]
-
-TY_ADMIN_CONFIG = {"GEN_APPS": APPS}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
