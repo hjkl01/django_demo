@@ -9,7 +9,7 @@ license-expression = "MIT"
 dependencies = [
     "django==3.2.4",
     "django-filter==2.4.0",
-    "django-import-export==2.5.0",
+    "django-import-export>=2.8.0",
     "django-simpleui==2021.6.2",
     "djangorestframework==3.12.4",
     "djangorestframework-simplejwt==4.7.1",
