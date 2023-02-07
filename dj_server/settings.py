@@ -239,7 +239,7 @@ SIMPLEUI_CONFIG = {
             "name": "Websites",
             "icon": "fa fa-blog",
             "models": [
-                {"name": "BLOG", "url": "https://pages.hjkl01.cn/"},
+                {"name": "BLOG", "url": "https://blog.hjkl01.cn/"},
                 {"name": "抽屉", "url": "https://dig.chouti.com/"},
                 {"name": "ROUTER", "url": "https://www.right.com.cn/forum/"},
             ],
