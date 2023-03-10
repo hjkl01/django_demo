@@ -42,6 +42,7 @@ mm = "python manage.py makemigrations"
 mr = "python manage.py migrate"
 mrs = { cmd = ["python","manage.py","migrate","--run-syncdb"]}
 mmrs = { shell = "python manage.py makemigrations && python manage.py migrate --run-syncdb" }
+gen = { shell = "python manage.py init_admin && python manage.py gen_all && cd tyadmin && npm install && npm run build" }
 st = { cmd = ["python","manage.py","collectstatic", "-c"]}
 cs = "python manage.py createsuperuser"
 dev = "python manage.py runserver"
