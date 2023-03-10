@@ -38,10 +38,11 @@ build-backend = "pdm.pep517.api"
 
 [tool.pdm.scripts]
 _.env_file = ".env"
-pre_migrate = "python manage.py makemigrations"
-migrate = "python manage.py migrate"
-post_migrate = { cmd = ["python","manage.py","migrate","--run-syncdb"]}
-static = { cmd = ["python","manage.py","collectstatic", "-c"]}
-createsuperuser = "python manage.py createsuperuser"
+mm = "python manage.py makemigrations"
+mr = "python manage.py migrate"
+mrs = { cmd = ["python","manage.py","migrate","--run-syncdb"]}
+mmrs = { shell = "python manage.py makemigrations && python manage.py migrate --run-syncdb" }
+st = { cmd = ["python","manage.py","collectstatic", "-c"]}
+cs = "python manage.py createsuperuser"
 dev = "python manage.py runserver"
 start = "gunicorn -w 8 -b localhost:8000 dj_server.wsgi"
