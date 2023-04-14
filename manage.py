@@ -14,7 +14,7 @@ def main():
         "mr": "python manage.py migrate",
         "mrs": "python manage.py migrate --run-syncdb",
         "st": "python manage.py collectstatic -c",
-        "all": "python manage.py makemigrations && python manage.py migrate --run-syncdb && rm -rf staticfiles && python manage.py collectstatic -c",
+        "all": "python manage.py makemigrations && python manage.py migrate --run-syncdb && rm -rf static && mkdir static && python manage.py collectstatic -c",
         "gen": "python manage.py init_admin && python manage.py gen_all && cd tyadmin && yarn install && yarn build",
         "cs": "python manage.py createsuperuser --email ycm76229@gmail.com --username ycm76229",
         "dev": "open http://127.0.0.1:8000/ && python manage.py runserver 0.0.0.0:8000",

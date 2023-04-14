@@ -3,15 +3,15 @@ import {
   createIntl,
   IntlShape,
   MessageDescriptor,
-} from '/Users/jinlong/dev/github/django_demo/tyadmin/node_modules/react-intl';
+} from '/home/jinlong/django_demo/tyadmin/node_modules/react-intl';
 import { ApplyPluginsType } from 'umi';
 import { event, LANG_CHANGE_EVENT } from './locale';
 // @ts-ignore
-import warning from '/Users/jinlong/dev/github/django_demo/tyadmin/node_modules/warning/warning.js';
+import warning from '/home/jinlong/django_demo/tyadmin/node_modules/warning/warning.js';
 
 import { plugin } from '../core/umiExports';
 
-export * from '/Users/jinlong/dev/github/django_demo/tyadmin/node_modules/react-intl';
+export * from '/home/jinlong/django_demo/tyadmin/node_modules/react-intl';
 
 let g_intl: IntlShape;
 
@@ -20,7 +20,7 @@ const useLocalStorage = true;
 export const localeInfo: {[key: string]: any} = {
   'en-US': {
     messages: {
-      ...((locale) => locale.__esModule ? locale.default : locale)(require('/Users/jinlong/dev/github/django_demo/tyadmin/src/locales/en-US.js')),
+      ...((locale) => locale.__esModule ? locale.default : locale)(require('/home/jinlong/django_demo/tyadmin/src/locales/en-US.js')),
     },
     locale: 'en-US',
     antd: {
@@ -30,7 +30,7 @@ export const localeInfo: {[key: string]: any} = {
   },
   'zh-CN': {
     messages: {
-      ...((locale) => locale.__esModule ? locale.default : locale)(require('/Users/jinlong/dev/github/django_demo/tyadmin/src/locales/zh-CN.js')),
+      ...((locale) => locale.__esModule ? locale.default : locale)(require('/home/jinlong/django_demo/tyadmin/src/locales/zh-CN.js')),
     },
     locale: 'zh-CN',
     antd: {

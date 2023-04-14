@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { ApplyPluginsType } from 'umi';
 import dva from 'dva';
 // @ts-ignore
-import createLoading from '/Users/jinlong/dev/github/django_demo/tyadmin/node_modules/dva-loading/dist/index.esm.js';
+import createLoading from '/home/jinlong/django_demo/tyadmin/node_modules/dva-loading/dist/index.esm.js';
 import { plugin, history } from '../core/umiExports';
 
 let app:any = null;
@@ -28,10 +28,10 @@ export function _onCreate(options = {}) {
   (runtimeDva.plugins || []).forEach((plugin:any) => {
     app.use(plugin);
   });
-  app.model({ namespace: 'global', ...(require('/Users/jinlong/dev/github/django_demo/tyadmin/src/models/global.js').default) });
-app.model({ namespace: 'login', ...(require('/Users/jinlong/dev/github/django_demo/tyadmin/src/models/login.js').default) });
-app.model({ namespace: 'setting', ...(require('/Users/jinlong/dev/github/django_demo/tyadmin/src/models/setting.js').default) });
-app.model({ namespace: 'user', ...(require('/Users/jinlong/dev/github/django_demo/tyadmin/src/models/user.js').default) });
+  app.model({ namespace: 'global', ...(require('/home/jinlong/django_demo/tyadmin/src/models/global.js').default) });
+app.model({ namespace: 'login', ...(require('/home/jinlong/django_demo/tyadmin/src/models/login.js').default) });
+app.model({ namespace: 'setting', ...(require('/home/jinlong/django_demo/tyadmin/src/models/setting.js').default) });
+app.model({ namespace: 'user', ...(require('/home/jinlong/django_demo/tyadmin/src/models/user.js').default) });
   return app;
 }
 

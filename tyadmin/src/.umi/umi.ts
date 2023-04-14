@@ -3,8 +3,8 @@ import './core/polyfill';
 import '../global.jsx';
 import { plugin } from './core/plugin';
 import { createHistory } from './core/history';
-import { ApplyPluginsType } from '/Users/jinlong/dev/github/django_demo/tyadmin/node_modules/@umijs/runtime';
-import { renderClient } from '/Users/jinlong/dev/github/django_demo/tyadmin/node_modules/@umijs/renderer-react/dist/index.js';
+import { ApplyPluginsType } from '/home/jinlong/django_demo/tyadmin/node_modules/@umijs/runtime';
+import { renderClient } from '/home/jinlong/django_demo/tyadmin/node_modules/@umijs/renderer-react/dist/index.js';
 
 
 require('../global.less');

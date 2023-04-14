@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Base on https://github.com/umijs//Users/jinlong/dev/github/django_demo/tyadmin/node_modules/umi-request
+ * Base on https://github.com/umijs//home/jinlong/django_demo/tyadmin/node_modules/umi-request
  */
 import {
   extend,
@@ -13,14 +13,14 @@ import {
   RequestResponse,
   RequestInterceptor,
   ResponseInterceptor,
-} from '/Users/jinlong/dev/github/django_demo/tyadmin/node_modules/umi-request';
+} from '/home/jinlong/django_demo/tyadmin/node_modules/umi-request';
 // @ts-ignore
 
 import { ApplyPluginsType } from 'umi';
 import { history, plugin } from '../core/umiExports';
             
 import { message, notification } from 'antd';
-import useUmiRequest, { UseRequestProvider } from '/Users/jinlong/dev/github/django_demo/tyadmin/node_modules/@ahooksjs/use-request';
+import useUmiRequest, { UseRequestProvider } from '/home/jinlong/django_demo/tyadmin/node_modules/@ahooksjs/use-request';
 import {
   BaseOptions,
   BasePaginatedOptions,
@@ -36,7 +36,7 @@ import {
   PaginatedOptionsWithFormat,
   PaginatedParams,
   PaginatedResult,
-} from '/Users/jinlong/dev/github/django_demo/tyadmin/node_modules/@ahooksjs/use-request/lib/types';
+} from '/home/jinlong/django_demo/tyadmin/node_modules/@ahooksjs/use-request/lib/types';
 
 type ResultWithData<T = any> = { data: T; [key: string]: any };
 

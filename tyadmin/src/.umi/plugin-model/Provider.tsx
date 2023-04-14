@@ -1,13 +1,13 @@
 // @ts-nocheck
 import React from 'react';
-import initialState from '/Users/jinlong/dev/github/django_demo/tyadmin/src/.umi/plugin-initial-state/models/initialState';
+import initialState from '/home/jinlong/django_demo/tyadmin/src/.umi/plugin-initial-state/models/initialState';
 
 // @ts-ignore
-import Dispatcher from '/Users/jinlong/dev/github/django_demo/tyadmin/node_modules/@umijs/plugin-model/lib/helpers/dispatcher';
+import Dispatcher from '/home/jinlong/django_demo/tyadmin/node_modules/@umijs/plugin-model/lib/helpers/dispatcher';
 // @ts-ignore
-import Executor from '/Users/jinlong/dev/github/django_demo/tyadmin/node_modules/@umijs/plugin-model/lib/helpers/executor';
+import Executor from '/home/jinlong/django_demo/tyadmin/node_modules/@umijs/plugin-model/lib/helpers/executor';
 // @ts-ignore
-import { UmiContext } from '/Users/jinlong/dev/github/django_demo/tyadmin/node_modules/@umijs/plugin-model/lib/helpers/constant';
+import { UmiContext } from '/home/jinlong/django_demo/tyadmin/node_modules/@umijs/plugin-model/lib/helpers/constant';
 
 export const models = { '@@initialState': initialState,  };
 

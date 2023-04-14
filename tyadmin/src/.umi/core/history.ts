@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { createBrowserHistory } from '/Users/jinlong/dev/github/django_demo/tyadmin/node_modules/@umijs/runtime';
+import { createBrowserHistory } from '/home/jinlong/django_demo/tyadmin/node_modules/@umijs/runtime';
 
 let options = {
   "basename": "/"

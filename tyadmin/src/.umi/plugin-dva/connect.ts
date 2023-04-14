@@ -6,10 +6,10 @@ import { EffectsCommandMap, SubscriptionAPI } from 'dva';
 import { match } from 'react-router-dom';
 import { Location, LocationState, History } from 'history';
 
-export * from '/Users/jinlong/dev/github/django_demo/tyadmin/src/models/global';
-export * from '/Users/jinlong/dev/github/django_demo/tyadmin/src/models/login';
-export * from '/Users/jinlong/dev/github/django_demo/tyadmin/src/models/setting';
-export * from '/Users/jinlong/dev/github/django_demo/tyadmin/src/models/user';
+export * from '/home/jinlong/django_demo/tyadmin/src/models/global';
+export * from '/home/jinlong/django_demo/tyadmin/src/models/login';
+export * from '/home/jinlong/django_demo/tyadmin/src/models/setting';
+export * from '/home/jinlong/django_demo/tyadmin/src/models/user';
 
 export interface Action<T = any> {
   type: T

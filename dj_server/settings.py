@@ -39,7 +39,7 @@ ALLOWED_HOSTS = ["*"]
 
 if DEBUG:
     STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-    # STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
     DEFAULT_PERMISSION_CLASSES = ["rest_framework.permissions.AllowAny"]
 else:
     # simpleui
@@ -162,9 +162,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.IsAdminUser",
-    ],
+    "DEFAULT_PERMISSION_CLASSES": DEFAULT_PERMISSION_CLASSES,
     "DEFAULT_AUTHENTICATION_CLASSES": (
         #  "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
