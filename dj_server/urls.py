@@ -15,81 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-    TokenVerifyView,
-)
 from django.conf.urls import url, include
 from django.views.generic import RedirectView
 from django.views import static
 from django.conf import settings
 
-from rest_framework import routers
-from rest_framework import permissions
-from drf_yasg.views import get_schema_view
-from drf_yasg import openapi
 from tyadmin_api.views import AdminIndexView
 
-from apps.collectlog import views
-from apps.news import views as news_views
-
-
-router = routers.DefaultRouter()
-router.register(r"users", views.UserViewSet)
-router.register(r"groups", views.GroupViewSet)
-router.register(r"log", views.CollectLogViewSet)
-router.register(r"news", news_views.NewsViewSet)
-patterns = [
-    url(r"^api/", include(router.urls)),
-]
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    url(
-        r"^static/(?P<path>.*)$",
-        static.serve,
-        {"document_root": settings.STATIC_ROOT},
-        name="static",
-    ),
-] + patterns
-
-
-urlpatterns += [
-    path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
-    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
-    path("api/token/verify/", TokenVerifyView.as_view(), name="token_verify"),
-]
-
-schema_view = get_schema_view(
-    openapi.Info(
-        title="Snippets API",
-        default_version="v1",
-        description="This is a swagger ",
-        terms_of_service="http://nj.hjkl01.cn:8000",
-        contact=openapi.Contact(email="jinlong.li@cpgrouptechnology.com"),
-        license=openapi.License(name="BSD License"),
-    ),
-    public=False,
-    permission_classes=(permissions.AllowAny,),
-)
-
-urlpatterns += [
+    url(r"^$", RedirectView.as_view(url="/xadmin/")),
     re_path("^xadmin/.*", AdminIndexView.as_view()),
     path("api/xadmin/v1/", include("tyadmin_api.urls")),
-    url(r"^$", RedirectView.as_view(url="/xadmin/")),
-    url(
-        r"^swagger(?P<format>\.json|\.yaml)$",
-        schema_view.without_ui(cache_timeout=0),
-        name="schema-json",
-    ),
-    url(
-        r"^swagger/$",
-        schema_view.with_ui("swagger", cache_timeout=0),
-        name="schema-swagger-ui",
-    ),
-    url(
-        r"^redoc/$", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"
-    ),
-    url(r"^accounts/", RedirectView.as_view(url="/admin/")),
+    url(r"^static/(?P<path>.*)$", static.serve, {"document_root": settings.STATIC_ROOT}, name="static"),
 ]

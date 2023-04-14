@@ -8,7 +8,25 @@ from rest_framework.decorators import action
 from django.http import HttpResponse
 from rest_framework.renderers import JSONRenderer
 
-from apps.news.serializers import News, NewsSerializer
+from rest_framework import serializers
+
+from apps.news.models import News
+
+
+class NewsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = News
+        fields = [n.name for n in News._meta.get_fields()]
+        # fields = (
+        #     "id",
+        #     "url",
+        #     "website",
+        #     "title",
+        #     "hot_score",
+        #     "img_url",
+        #     "click_count",
+        #     "created_time",
+        # )
 
 
 class JSONResponse(HttpResponse):
@@ -48,9 +66,7 @@ class NewsViewSet(viewsets.ModelViewSet):
         print("args--> ", args)
         print("kwargs--> ", kwargs)
         yestoday = datetime.today() - timedelta(days=1)
-        news_ids = [
-            n.id for n in News.objects.filter(created_time__gte=yestoday.date())
-        ]
+        news_ids = [n.id for n in News.objects.filter(created_time__gte=yestoday.date())]
         ids = random.choices(news_ids, k=15)
         print(ids)
 

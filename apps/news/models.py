@@ -4,7 +4,6 @@ from django.db import models
 
 
 class News(models.Model):
-
     id = models.AutoField(primary_key=True, verbose_name="唯一ID")
     # url = models.URLField(null=False, db_index=True)
     url = models.URLField(null=False, unique=True, db_index=True, verbose_name="链接地址")
